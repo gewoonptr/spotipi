@@ -47,37 +47,35 @@ for line, text in enumerate(lines):
 
 scrollphathd.set_pixel(offset_left - 1, (len(lines) * line_height) - 1, 0)
 
-while True:
-     scrollphathd.scroll_to(0, 0)
-                                                                                                            scrollphathd.show()
+while True:  
+       scrollphathd.scroll_to(0, 0)
+       scrollphathd.show()
+     
+       pos_x = 0
+       pos_y = 0
 
-                                                                                                                # Keep track of the X and Y position for the rewind effect
-                                                                                                                    pos_x = 0
-                                                                                                                        pos_y = 0
-
-                                                                                                                            for current_line, line_length in enumerate(lengths):
-                                                                                                                                        # Delay a slightly longer time at the start of each line
-                                                                                                                                                time.sleep(delay * 10)
-
-                                                                                                                                                        # Scroll to the end of the current line
-                                                                                                                                                                for y in range(line_length):
-                                                                                                                                                                                scrollphathd.scroll(1, 0)
-                                                                                                                                                                                            pos_x += 1
-                                                                                                                                                                                                        time.sleep(delay)
-                                                                                                                                                                                                                    scrollphathd.show()
-
-                                                                                                                                                                                                                            # If we're currently on the very last line and rewind is True
-                                                                                                                                                                                                                                    # We should rapidly scroll back to the first line.
-                                                                                                                                                                                                                                            if current_line == len(lines) - 1 and rewind:
-                                                                                                                                                                                                                                                            for y in range(pos_y):
-                                                                                                                                                                                                                                                                                scrollphathd.scroll(-int(pos_x / pos_y), -1)
-                                                                                                                                                                                                                                                                                                scrollphathd.show()
-                                                                                                                                                                                                                                                                                                                time.sleep(delay)
-
-                                                                                                                                                                                                                                                                                                                        # Otherwise, progress to the next line by scrolling upwards
-                                                                                                                                                                                                                                                                                                                                else:
-                                                                                                                                                                                                                                                                                                                                                for x in range(line_height):
-                                                                                                                                                                                                                                                                                                                                                                    scrollphathd.scroll(0, 1)
-                                                                                                                                                                                                                                                                                                                                                                                    pos_y += 1
-                                                                                                                                                                                                                                                                                                                                                                                                    scrollphathd.show()
-                                                                                                                                                                                                                                                                                                                                                                                                                    time.sleep(delay)
+       for current_line, line_length in enumerate(lengths):    
+              # Delay a slightly longer time at the start of each line
+              time.sleep(delay * 10)            
+              # Scroll to the end of the current line
+              for y in range(line_length):
+                     scrollphathd.scroll(1, 0)
+                     pos_x += 1
+                     time.sleep(delay)
+                     scrollphathd.show()
+                     
+                     # If we're currently on the very last line and rewind is True
+                     # We should rapidly scroll back to the first line.
+              if current_line == len(lines) - 1 and rewind:
+                     for y in range(pos_y):
+                            scrollphathd.scroll(-int(pos_x / pos_y), -1)
+                            scrollphathd.show()
+                            time.sleep(delay)
+                            
+                            # Otherwise, progress to the next line by scrolling upwards
+              else:
+                     for x in range(line_height):
+                            scrollphathd.scroll(0, 1)
+                            pos_y += 1
+                            scrollphathd.show()
+                            time.sleep(delay)
