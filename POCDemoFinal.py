@@ -21,7 +21,7 @@ cid="292aaab47e4041e5937fb8ae6f5ebc30"
 secret="bd548194ccfe4f43a575dcc994709def"
 username = "pdzpdz@protonmail.com"
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,client_secret=secret,redirect_uri='http://localhost/callback/',scope="user-read-currently-playing"))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,client_secret=secret,redirect_uri='http://localhost/callback/',scope="user-read-currently-playing",open_browser=False))
 
 def getSpotifyInfo():
 
