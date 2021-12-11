@@ -60,4 +60,4 @@ def scroll_message(message):
 while(True):
     scrolltext = getSpotifyInfo()
     scroll_message(scrolltext)
-    sleep(8)
+    time.sleep(8)
