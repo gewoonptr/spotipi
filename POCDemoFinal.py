@@ -9,7 +9,7 @@ from spotipy.oauth2 import SpotifyOAuth
 scrollphathd.rotate(180)
 
 # Dial down the brightness
-scrollphathd.set_brightness(0.2)
+scrollphathd.set_brightness(0.1)
 
 # If rewind is True the scroll effect will rapidly rewind after the last line
 rewind = False
@@ -25,6 +25,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,client_secret=secre
 
 def getSpotifyInfo():
 
+    
+    
+    
     result = sp.current_user_playing_track()
 
     if result == None:
@@ -57,3 +60,4 @@ def scroll_message(message):
 while(True):
     scrolltext = getSpotifyInfo()
     scroll_message(scrolltext)
+    sleep(8)
