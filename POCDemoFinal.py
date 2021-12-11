@@ -9,7 +9,7 @@ from spotipy.oauth2 import SpotifyOAuth
 scrollphathd.rotate(180)
 
 # Dial down the brightness
-scrollphathd.set_brightness(0.1)
+scrollphathd.set_brightness(0.2)
 
 # If rewind is True the scroll effect will rapidly rewind after the last line
 rewind = False
@@ -24,10 +24,6 @@ username = "pdzpdz@protonmail.com"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,client_secret=secret,redirect_uri='http://localhost/callback/',scope="user-read-currently-playing",open_browser=False))
 
 def getSpotifyInfo():
-
-    
-    
-    
     result = sp.current_user_playing_track()
 
     if result == None:
@@ -37,7 +33,7 @@ def getSpotifyInfo():
         artiest=(result['item']['album']['artists'][0]['name'])
         nummer=(result['item']['name'])
 
-    SpotifyInfo = artiest + " -" + nummer
+    SpotifyInfo = artiest + " - " + nummer
     return SpotifyInfo
 
 def scroll_message(message):
@@ -60,4 +56,4 @@ def scroll_message(message):
 while(True):
     scrolltext = getSpotifyInfo()
     scroll_message(scrolltext)
-    time.sleep(8)
+    time.sleep(1)
